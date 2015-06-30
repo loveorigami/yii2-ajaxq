@@ -1,0 +1,26 @@
+{
+    "name": "loveorigami/yii2-ajaxq",
+    "description": "Customizable ajaxq widget for Yii2",
+    "keywords": ["yii2", "ajaxq", "widget", "ajax"],
+    "type": "yii2-extension",
+    "license": "MIT",
+    "support": {
+        "source": "https://github.com/loveorigami/yii2-ajaxq",
+        "issues": "https://github.com/loveorigami/yii2-ajaxq/issues"
+    },
+    "authors": [
+        {
+            "name": "LoveOrigami",
+            "homepage": "https://github.com/loveorigami/"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "bower-asset/ajaxq": "~0.0.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "lo\\widgets\\ajaxq\\": ""
+        }
+    }
+}
