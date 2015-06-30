@@ -18,6 +18,8 @@ use yii\helpers\Json;
  * ```php
  * echo Ajaxq::widget([
  *     'url' => '/site/demo',
+ *     // 'name' => 'my_queue' // if need more butches with queries
+ *      'success' =>' $(".res").append(response["id"])';
  * ]);
  * ```
  *
@@ -31,19 +33,43 @@ class Ajaxq extends Widget
     public $url = '';
 
     /**
-     * @var integer|boolean $coreStyle A number from 1 to 5 connects style from the appropriate `example` folders.
-     * Set it to `false`, if you don't need to connect the built-in styles.
+     * @var $name string butch name for ajaxq queries.
      */
-    public $coreStyle = 1;
+    public $name = 'queue';
+
+    /**
+     * @var $success answer after ajax querie.
+     */
+    public $success = 'queue';
 
     public function init()
     {
         parent::init();
+
         $view = $this->getView();
 
         if (!empty($this->url)) {
+
+            $script = <<<JS
+                $(function() {
+
+                    function setAjaxq(qdata){
+                        $.ajaxq ($this->name,{
+                            url: $this->url,
+                            type: 'post',
+                            dataType:"json",
+                            data: qdata,
+                            success: function(response) {
+                                $this->success;
+                            }
+                        });
+                    });
+
+                });
+JS;
             $view->registerJs($script);
         }
+
 
         $bundle = AjaxqAsset::register($view);
 
