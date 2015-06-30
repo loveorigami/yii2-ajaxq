@@ -1,6 +1,6 @@
 Ajaxq Widget for Yii2
 ========================
-A customizable lightbox jQuery plugin for Yii2 based on [Ajaxq](http://foliotek.github.io/AjaxQ/).
+A customizable AjaxQ jQuery plugin for Yii2 based on [Ajaxq](http://foliotek.github.io/AjaxQ/).
 
 Installation
 ------------
@@ -39,11 +39,11 @@ $script = <<< JS
     $(function() {
 
         var i;
-        var data = {}; // associative array send as $_POST['qdata']
+        var dataq = {}; // associative array send as $_POST['dataq']
 
         for (i=0; i<=3; i++){
-            data['id'] = i;
-            setAjaxq(data);
+            dataq['id'] = i;
+            setAjaxq(dataq);
         }
 
     });
@@ -69,7 +69,7 @@ $this->registerJs($script);
     public function actionDemo()
     {
         $request = Yii::$app->request;
-        $post = $request->post('qdata'); // get associative array qdata
+        $post = $request->post('dataq'); // get associative array dataq
 
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         

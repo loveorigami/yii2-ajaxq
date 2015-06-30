@@ -40,7 +40,7 @@ class Ajaxq extends Widget
     /**
      * @var $success answer after ajax querie.
      */
-    public $success = 'queue';
+    public $success = '';
 
     public function init()
     {
@@ -52,13 +52,13 @@ class Ajaxq extends Widget
 
             $script = <<<JS
 
-            function setAjaxq(qdata){
+            function setAjaxq(dataq){
                 $.ajaxq ('$this->name',{
                     url: '$this->url',
                     type: 'post',
                     dataType:'json',
                     data:{
-                        qdata: qdata
+                        dataq: qdatq
                     },
                     success: function(res) {
                         $this->success;
