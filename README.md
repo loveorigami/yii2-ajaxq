@@ -22,13 +22,60 @@ to the require section of your application's `composer.json` file.
 
 Usage
 -----
+
 * In view:
 
 ```php
 use lo\widgets\ajaxq\Ajaxq;
 
-<?= Ajaxq::widget([
-    'url' => '/site/demo'
-    'name' => 'queue'
-]) ?>
+<?php
+ echo Ajaxq::widget([
+      'url' => '/playground/get-time',
+      'success' =>'$(".res").append(res["id"])'
+  ]);
+  
+// generate ajaxq requests
+$script = <<< JS
+    $(function() {
+
+        var i;
+        var data = {}; // associative array send as $_POST['qdata']
+
+        for (i=0; i<=3; i++){
+            data['id'] = i;
+            setAjaxq(data);
+        }
+
+    });
+
+JS;
+
+$this->registerJs($script);
+
+?>
+
+<div class="res"></div>
+
+```
+
+* In controller:
+     
+```php
+    /**
+     * Controller name - Site
+     * Demo for ajaxq request
+     * @return json
+     */
+    public function actionDemo()
+    {
+        $request = Yii::$app->request;
+        $post = $request->post('qdata'); // get associative array qdata
+
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        
+        $res['id'] = $post['id'];
+        $res['mes'] = 'It is ok!';
+
+        echo json_encode($res);
+    }
 ```

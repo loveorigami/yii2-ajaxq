@@ -51,21 +51,21 @@ class Ajaxq extends Widget
         if (!empty($this->url)) {
 
             $script = <<<JS
-                $(function() {
 
-                    function setAjaxq(qdata){
-                        $.ajaxq ($this->name,{
-                            url: $this->url,
-                            type: 'post',
-                            dataType:"json",
-                            data: qdata,
-                            success: function(response) {
-                                $this->success;
-                            }
-                        });
-                    });
-
+            function setAjaxq(qdata){
+                $.ajaxq ('$this->name',{
+                    url: '$this->url',
+                    type: 'post',
+                    dataType:'json',
+                    data:{
+                        qdata: qdata
+                    },
+                    success: function(res) {
+                        $this->success;
+                    }
                 });
+            };
+
 JS;
             $view->registerJs($script);
         }
