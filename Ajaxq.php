@@ -58,7 +58,7 @@ class Ajaxq extends Widget
                     type: 'post',
                     dataType:'json',
                     data:{
-                        dataq: qdatq
+                        dataq: dataq
                     },
                     success: function(res) {
                         $this->success;
