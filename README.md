@@ -30,7 +30,7 @@ use lo\widgets\ajaxq\Ajaxq;
 
 <?php
  echo Ajaxq::widget([
-      'url' => '/playground/get-time',
+      'url' => '/site/demo',
       // 'success' =>'$(".res").html(res["mes"])',
       // 'tpl' => 'from_to' // default view for generating ajax requests
   ]);
