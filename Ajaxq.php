@@ -16,12 +16,35 @@ use yii\helpers\Json;
  * For example:
  *
  * ```php
+ * In View
+ * ==================
  * echo Ajaxq::widget([
  *     'url' => '/site/demo',
  *     // 'name' => 'my_queue' // if need more butches with queries
- *      'success' =>' $(".res").append(res["id"])';
+ *     // 'tpl' => 'from_to', // default view for generating ajax requests
+ *     // 'success' =>' $(".res").append(res["id"])';
  * ]);
- * ```
+ *
+ * In controller
+ * ==================
+ * Controller name - Site
+ * Demo for ajaxq request
+ * @return json
+
+public function actionDemo()
+{
+    $post = \Yii::$app->request->post('dataq'); // get associative array dataq
+
+    \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+    $res['id'] = $post['id'];
+    $res['mes'] = $post['id'].' - It is ok!';
+
+    echo json_encode($res);
+}
+```
+
+
  *
  * @author Loveorigami
  * @see http://foliotek.github.io/AjaxQ/
