@@ -19,7 +19,7 @@ use yii\helpers\Json;
  * echo Ajaxq::widget([
  *     'url' => '/site/demo',
  *     // 'name' => 'my_queue' // if need more butches with queries
- *      'success' =>' $(".res").append(response["id"])';
+ *      'success' =>' $(".res").append(res["id"])';
  * ]);
  * ```
  *
@@ -40,7 +40,12 @@ class Ajaxq extends Widget
     /**
      * @var $success answer after ajax querie.
      */
-    public $success = '';
+    public $success = '$(".res").html(res["mes"])';
+
+    /**
+     * @var string the tpl to use.
+     */
+    public $tpl = 'from_to';
 
     public function init()
     {
@@ -71,7 +76,16 @@ JS;
         }
 
 
-        $bundle = AjaxqAsset::register($view);
+        AjaxqAsset::register($view);
 
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function run()
+    {
+        echo $this->render($this->tpl);
+    }
+
 }

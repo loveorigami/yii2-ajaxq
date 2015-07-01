@@ -31,30 +31,9 @@ use lo\widgets\ajaxq\Ajaxq;
 <?php
  echo Ajaxq::widget([
       'url' => '/playground/get-time',
-      'success' =>'$(".res").append(res["id"])'
+      // 'success' =>'$(".res").html(res["mes"])',
+      // 'tpl' => 'from_to' // default view for generating ajax requests
   ]);
-  
-// generate ajaxq requests
-$script = <<< JS
-    $(function() {
-
-        var i;
-        var dataq = {}; // associative array send as $_POST['dataq']
-
-        for (i=0; i<=3; i++){
-            dataq['id'] = i;
-            setAjaxq(dataq);
-        }
-
-    });
-
-JS;
-
-$this->registerJs($script);
-
-?>
-
-<div class="res"></div>
 
 ```
 
@@ -68,13 +47,12 @@ $this->registerJs($script);
      */
     public function actionDemo()
     {
-        $request = Yii::$app->request;
-        $post = $request->post('dataq'); // get associative array dataq
+        $post = \Yii::$app->request->post('dataq'); // get associative array dataq
 
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         
         $res['id'] = $post['id'];
-        $res['mes'] = 'It is ok!';
+        $res['mes'] = $post['id'].' - It is ok!';
 
         echo json_encode($res);
     }
