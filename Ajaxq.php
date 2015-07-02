@@ -5,7 +5,7 @@
  * @license http://opensource.org/licenses/MIT MIT
  */
 
-namespace lo\widgets\ajaxq;
+namespace lo\widgets;
 
 use yii\base\Widget;
 use yii\helpers\Json;
@@ -18,6 +18,8 @@ use yii\helpers\Json;
  * ```php
  * In View
  * ==================
+ * use lo\widgets\Ajaxq;
+ * 
  * echo Ajaxq::widget([
  *     'url' => '/site/demo',
  *     // 'name' => 'my_queue' // if need more butches with queries

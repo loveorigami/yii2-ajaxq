@@ -26,7 +26,7 @@ Usage
 * In view:
 
 ```php
-use lo\widgets\ajaxq\Ajaxq;
+use lo\widgets\Ajaxq;
 
 <?php
  echo Ajaxq::widget([

@@ -5,7 +5,7 @@
  * @license http://opensource.org/licenses/MIT MIT
  */
 
-namespace lo\widgets\ajaxq;
+namespace lo\widgets;
 
 use Yii;
 use yii\web\AssetBundle;
