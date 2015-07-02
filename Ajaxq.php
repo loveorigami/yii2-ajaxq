@@ -39,9 +39,11 @@ public function actionDemo()
 
     \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-    $res['id'] = $post['id'];
-    $res['mes'] = $post['id'].' - It is ok!';
+    $data['id'] = $post['id'];
+    $data['mes'] = $post['id'].' - It is ok!';
 
+	$res = print_r($data, true);
+	
     echo json_encode($res);
 }
 ```
@@ -65,7 +67,7 @@ class Ajaxq extends Widget
     /**
      * @var $success answer after ajax querie.
      */
-    public $success = '$(".res").html(res["mes"])';
+    public $success = '$(".res").html(res)';
 
     /**
      * @var string the tpl to use.

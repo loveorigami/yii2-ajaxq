@@ -31,7 +31,7 @@ use lo\widgets\Ajaxq;
 <?php
  echo Ajaxq::widget([
       'url' => '/site/demo',
-      // 'success' =>'$(".res").html(res["mes"])',
+      // 'success' =>'$(".res").html(res)',
       // 'tpl' => 'from_to' // default view for generating ajax requests
   ]);
 
@@ -51,8 +51,10 @@ use lo\widgets\Ajaxq;
 
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         
-        $res['id'] = $post['id'];
-        $res['mes'] = $post['id'].' - It is ok!';
+		$data['id'] = $post['id'];
+		$data['mes'] = $post['id'].' - It is ok!';
+
+		$res = print_r($data, true);
 
         echo json_encode($res);
     }
